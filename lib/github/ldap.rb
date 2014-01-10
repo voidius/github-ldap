@@ -43,7 +43,7 @@ module GitHub
     def check_encryption(encryption)
       return unless encryption
 
-      case encryption.downcase.to_sym
+      case encryption.to_s.downcase.to_sym
       when :ssl, :simple_tls
         :simple_tls
       when :tls, :start_tls
