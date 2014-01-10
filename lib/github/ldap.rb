@@ -24,7 +24,7 @@ module GitHub
     def initialize(options = {})
       @uid = options[:uid] || "sAMAccountName"
 
-      @connection = Net::LDAP.new({host: options[:host], port: options[:port]})
+      @connection = Net::LDAP.new({:host => options[:host], :port => options[:port]})
 
       if options[:admin_user] && options[:admin_password]
         @connection.authenticate(options[:admin_user], options[:admin_password])

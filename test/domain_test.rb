@@ -80,15 +80,15 @@ module GitHubLdapDomainTestCases
 
   def test_search
     assert 1, @domain.search(
-      attributes: %w(uid),
-      filter: Net::LDAP::Filter.eq('uid', 'calavera')).size
+      :attribute => %w(uid),
+      :filter => Net::LDAP::Filter.eq('uid', 'calavera')).size
   end
 
   def test_search_override_base_name
     assert 1, @domain.search(
-      base: "this base name is incorrect",
-      attributes: %w(uid),
-      filter: Net::LDAP::Filter.eq('uid', 'calavera')).size
+      :base => "this base name is incorrect",
+      :attributes => %w(uid),
+      :filter => Net::LDAP::Filter.eq('uid', 'calavera')).size
   end
 
   def test_user_exists

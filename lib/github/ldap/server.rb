@@ -6,12 +6,12 @@ module GitHub
     DEFAULT_FIXTURES_PATH = File.expand_path('fixtures.ldif', File.dirname(__FILE__))
 
     DEFAULT_SERVER_OPTIONS = {
-      user_fixtures:  DEFAULT_FIXTURES_PATH,
-      user_domain:     'dc=github,dc=com',
-      admin_user:      'uid=admin,dc=github,dc=com',
-      admin_password:  'secret',
-      quiet:           true,
-      port:            3897
+      :user_fixtures  => DEFAULT_FIXTURES_PATH,
+      :user_domain    => 'dc=github,dc=com',
+      :admin_user     => 'uid=admin,dc=github,dc=com',
+      :admin_password => 'secret',
+      :quiet          => true,
+      :port           => 3897
     }
 
     class << self

@@ -24,7 +24,7 @@ module GitHub
       #
       # Returns a list of ldap entries for the configured groups.
       def groups(group_names)
-        search(filter: group_filter(group_names))
+        search(:filter => group_filter(group_names))
       end
 
       # List the groups that a user is member of.
@@ -34,7 +34,7 @@ module GitHub
       #
       # Return an Array with the groups that the given user is member of that belong to the given group list.
       def membership(user_dn, group_names)
-        search(filter: group_filter(group_names, user_dn))
+        search(:filter => group_filter(group_names, user_dn))
       end
 
       # Check if the user is include in any of the configured groups.
@@ -75,9 +75,9 @@ module GitHub
       def user?(login)
         escaped_login = Net::LDAP::Filter.escape(login)
         rs = search(
-          filter: Net::LDAP::Filter.eq(@uid, escaped_login),
-          attributes: [],
-          limit: 1)
+          :filter => Net::LDAP::Filter.eq(@uid, escaped_login),
+          :attributes => [],
+          :limit => 1)
         rs and rs.first
       end
 
@@ -88,7 +88,7 @@ module GitHub
       #
       # Returns true if the user can be bound.
       def auth(user, password)
-        @connection.bind(method: :simple, username: user.dn, password: password)
+        @connection.bind(:method => :simple, :username => user.dn, :password => password)
       end
 
       # Authenticate a user with the ldap server.

@@ -26,8 +26,8 @@ class GitHub::Ldap::Test < Minitest::Test
 
   def options
     @options ||= GitHub::Ldap.server_options.merge \
-      host: 'localhost',
-      uid:  'uid'
+      :host => 'localhost',
+      :uid =>  'uid'
   end
 end
 
